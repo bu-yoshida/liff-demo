@@ -4,10 +4,18 @@
   "description": "A minimun app to demo how to integrate LIFF",
   "repository": {
     "type": "git",
-    "url": "https://github.com/line/line-liff-v2-starter"
+    "url": "https://github.com/bu-yoshida/line-liff-v2-starter"
   },
   "keywords": [
     "LINE",
     "LIFF"
-  ]
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^4.0.0"
+  }
 }
