@@ -1,3 +1,4 @@
+console.log("LIFF SDK:", typeof liff);
 document.addEventListener('DOMContentLoaded', function() {
     // LIFF SDKの初期化
     liff.init({ liffId: '2007056252-nJkxzKxa' }) // YOUR_LIFF_IDを実際のLIFF IDに置き換えます
