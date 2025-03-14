@@ -1,8 +1,8 @@
-console.log("LIFF SDK:", typeof liff);
 document.addEventListener('DOMContentLoaded', function() {
     // LIFF SDKの初期化
-    liff.init({ liffId: '2007056252-nJkxzKxa' }) // YOUR_LIFF_IDを実際のLIFF IDに置き換えます
+    liff.init({ liffId: '2007056252-3kdw45bE' }) // YOUR_LIFF_IDを実際のLIFF IDに置き換えます
         .then(() => {
+            console.log("LIFF SDK:", typeof liff);
             if (!liff.isLoggedIn()) {
                 document.getElementById('loginButton').style.display = 'block';
             } else {
@@ -77,6 +77,11 @@ function shareList(message) {
 
 // 例: リスト共有ボタンのクリックイベント
 document.getElementById('shareButton').addEventListener('click', function() {
-    const listMessage = '共有したいリストの内容'; // 実際のリスト内容に置き換えます
+    // リストの内容を取得する
+    const shoppingList = document.getElementById('shoppingList');
+    let listMessage = '';
+    for (let i = 0; i < shoppingList.children.length; i++) {
+        listMessage += shoppingList.children[i].textContent + '\n';
+    }
     shareList(listMessage);
 });
