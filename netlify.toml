@@ -3,4 +3,4 @@
   publish = "src/vanilla/dist"
 
 [template.environment]
-  LIFF_ID = "Your LIFF ID which is aquired from LINE Dev Center"
+  LIFF_ID = "2007056252-3kdw45bE"
