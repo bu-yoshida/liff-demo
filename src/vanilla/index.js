@@ -11,3 +11,8 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log(error)
     })
 });
+import liff from "@line/liff";
+
+liff.init({
+  liffId: "2007056252-3kdw45bE", // Use own liffId
+});
