@@ -25,5 +25,11 @@
   "license": "MIT",
   "dependencies": {
     "@line/liff": "^2.25.1"
+  },
+  "targets": {
+    "browser": {
+      "context": "browser",
+      "publicUrl": "./"
+    }
   }
 }

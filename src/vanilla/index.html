@@ -1,60 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="index.css" />
-    <title>LIFF Starter</title>
-  </head>
-  <body>
-    <div class="home">
-      <h1 class="home__title">
-        Welcome to <br /><a
-          class="home__title__link"
-          href="https://developers.line.biz/en/docs/liff/overview/"
-          >LIFF Starter!</a
-        >
-      </h1>
-      <div class="home__badges">
-        <span class="home__badges__badge badge--primary"> LIFF Starter </span>
-        <span class="home__badges__badge badge--secondary"> vanilla </span>
-        <span class="home__badges__badge badge--tertiary"> 0.1.0 </span>
-        <a
-          href="https://github.com/line/line-liff-v2-starter"
-          target="_blank"
-          rel="noreferrer"
-          class="home__badges__badge badge--secondary"
-        >
-          GitHub
-        </a>
-      </div>
-      <div class="home__buttons">
-        <a
-          href="https://developers.line.biz/en/docs/liff/developing-liff-apps/"
-          target="_blank"
-          rel="noreferrer"
-          class="home__buttons__button button--primary"
-        >
-          LIFF Documentation
-        </a>
-        <a
-          href="https://liff-playground.netlify.app/"
-          target="_blank"
-          rel="noreferrer"
-          class="home__buttons__button button--tertiary"
-        >
-          LIFF Playground
-        </a>
-        <a
-          href="https://developers.line.biz/console/"
-          target="_blank"
-          rel="noreferrer"
-          class="home__buttons__button button--secondary"
-        >
-          LINE Developers Console
-        </a>
-      </div>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>シェア買い - お買い物リスト</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://d.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>シェア買い - お買い物リスト</h1>
+        <input type="text" id="itemInput" placeholder="アイテムを追加">
+        <button id="addItemButton">追加</button>
+        <ul id="shoppingList"></ul>
+        <button id="shareButton">LINEグループに共有</button>
+        <button id="loginButton">LINEでログイン</button>
     </div>
-  </body>
+    <script src="index.js"></script>
+</body>
 </html>
