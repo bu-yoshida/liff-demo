@@ -1,8 +1,5 @@
 {
   "presets": [
-    "env"
-  ],
-  "plugins": [
-    "transform-class-properties"
+    "@babel/preset-env"
   ]
 }
