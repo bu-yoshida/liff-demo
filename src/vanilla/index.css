@@ -99,10 +99,6 @@ h1 {
 
 .list-selector select {
     flex: 1;
-    padding: 10px;
-    border: 1px solid var(--medium-gray);
-    border-radius: var(--border-radius);
-    font-size: 16px;
 }
 
 .icon-button {
@@ -121,8 +117,7 @@ h1 {
 /* Form Elements */
 input[type="text"],
 input[type="number"],
-input[type="date"],
-select {
+input[type="date"] {
     font-family: inherit;
     padding: 12px;
     margin-bottom: 10px;
@@ -131,6 +126,71 @@ select {
     font-size: 16px;
     width: 100%;
     box-sizing: border-box;
+}
+
+/* Custom Select Styling */
+select {
+    font-family: inherit;
+    padding: 12px 12px 12px 15px;
+    margin-bottom: 10px;
+    border: 1px solid var(--medium-gray);
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    background-color: white;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 10px center !important;
+    padding-right: 35px !important;
+    cursor: pointer;
+    text-overflow: ellipsis;
+}
+
+/* Specific select elements */
+#listSelector,
+#itemCategory,
+#categoryFilter,
+#storeFilter,
+#statusFilter {
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 10px center !important;
+    padding-right: 35px !important;
+}
+
+/* Fix for iOS text alignment */
+@supports (-webkit-touch-callout: none) {
+    select {
+        font-size: 16px;
+        /* Prevent zoom on iOS */
+        text-indent: 1px;
+        /* Fix text alignment on iOS */
+    }
+
+    /* iOS specific overrides */
+    #listSelector,
+    #itemCategory,
+    #categoryFilter,
+    #storeFilter,
+    #statusFilter {
+        text-indent: 1px;
+        text-overflow: ellipsis;
+        border-radius: var(--border-radius);
+        border: 1px solid var(--medium-gray);
+    }
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(6, 199, 85, 0.2);
 }
 
 .add-item-form {
