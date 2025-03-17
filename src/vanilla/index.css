@@ -1,60 +1,388 @@
+:root {
+    --primary-color: #06c755;
+    /* LINE Green */
+    --secondary-color: #e17e7e;
+    --text-color: #333333;
+    --light-gray: #f5f5f5;
+    --medium-gray: #e0e0e0;
+    --dark-gray: #757575;
+    --danger-color: #ff4d4f;
+    --success-color: #52c41a;
+    --border-radius: 8px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
 body {
-    font-family: 'TsukuARdGothic-Regular','メイリオ', Meiryo,'ヒラギノ角ゴシック','Hiragino Sans',sans-serif;
-    background: linear-gradient(to right, #e1fae0, #fff6da); /* Gradient background */
+    font-family: 'Noto Sans JP', 'メイリオ', Meiryo, 'ヒラギノ角ゴシック', 'Hiragino Sans', sans-serif;
+    background: #f7f7f7;
     margin: 0;
     padding: 20px;
+    color: var(--text-color);
 }
 
 .container {
     max-width: 600px;
     margin: auto;
-    background: #ffffff; /* White background */
+    background: #ffffff;
     padding: 20px;
-    border-radius: 12px; /* Rounded corners */
-    box-shadow: 0 4px 20px rgba(5, 4, 2, 0.1); /* Soft shadow */
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+h1,
+h2,
+h3 {
+    text-align: center;
+    margin-top: 0;
 }
 
 h1 {
-    text-align: center;
-    color: #531f1f;
+    color: var(--primary-color);
+    margin-bottom: 20px;
 }
 
-input[type="text"] {
-    font-family: 'TsukuARdGothic-Regular','メイリオ', Meiryo,'ヒラギノ角ゴシック','Hiragino Sans',sans-serif;
-    width: calc(100% - 22px);
-    padding: 12px; /* Increased padding */
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px; /* Rounded corners */
-    font-size: 16px; /* Increased font size */
+/* User Profile */
+.user-profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: var(--light-gray);
+    border-radius: var(--border-radius);
 }
 
-button {
-    font-family: 'TsukuARdGothic-Regular','メイリオ', Meiryo,'ヒラギノ角ゴシック','Hiragino Sans',sans-serif;
-    width: 100%;
-    padding: 12px; /* Increased padding */
-    background-color: #e17e7e; /* Softer pink background */
-    color: white;
+.profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--medium-gray);
+}
+
+.tab-button {
+    flex: 1;
+    padding: 10px;
+    background: none;
     border: none;
-    border-radius: 8px; /* Rounded corners */
+    color: var(--dark-gray);
+    font-weight: 500;
     cursor: pointer;
-    font-size: 16px; /* Increased font size */
-    transition: background-color 0.3s; /* Smooth transition */
+    transition: all 0.3s;
 }
 
-button:hover {
-    background-color: #e23b25; /* Slightly darker pink on hover */
+.tab-button.active {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
 }
 
-ul {
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* List Selector */
+.list-selector {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.list-selector select {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--medium-gray);
+    border-radius: var(--border-radius);
+    font-size: 16px;
+}
+
+.icon-button {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Form Elements */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+    font-family: inherit;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid var(--medium-gray);
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.add-item-form {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: var(--light-gray);
+    border-radius: var(--border-radius);
+}
+
+.item-details {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.item-details input,
+.item-details select {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+/* Buttons */
+button {
+    font-family: inherit;
+    padding: 12px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.primary-button {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.primary-button:hover {
+    background-color: #05a649;
+}
+
+.secondary-button {
+    background-color: var(--medium-gray);
+    color: var(--text-color);
+}
+
+.secondary-button:hover {
+    background-color: #d0d0d0;
+}
+
+/* Filter Options */
+.filter-options {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.filter-options select {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+/* Shopping List */
+.shopping-list {
     list-style-type: none;
     padding: 0;
+    margin-bottom: 20px;
 }
 
-li {
-    padding: 12px; /* Increased padding */
-    border-bottom: 1px solid #eee;
-    background-color: #fafafa; /* Light gray background for list items */
-    border-radius: 8px; /* Rounded corners */
-    margin-bottom: 8px; /* Space between list items */
+.shopping-list li {
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.shopping-list li.completed {
+    border-left-color: var(--success-color);
+    opacity: 0.7;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-name {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.item-details-text {
+    font-size: 14px;
+    color: var(--dark-gray);
+}
+
+.item-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.item-actions button {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.check-button {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.delete-button {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* History Tab */
+.history-filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.history-list li {
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.history-date {
+    font-size: 14px;
+    color: var(--dark-gray);
+    margin-bottom: 5px;
+}
+
+/* Settings Tab */
+.settings-section {
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: var(--light-gray);
+    border-radius: var(--border-radius);
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--medium-gray);
+}
+
+.setting-item:last-child {
+    border-bottom: none;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Share Options */
+.share-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.share-option {
+    flex: 1;
+    min-width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--light-gray);
+    border-radius: var(--border-radius);
+}
+
+.share-option i {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.share-link-container {
+    display: flex;
+    margin-top: 20px;
+}
+
+.share-link-container input {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.share-link-container button {
+    width: 50px;
+    margin-left: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .item-details {
+        flex-direction: column;
+    }
+
+    .filter-options {
+        flex-direction: column;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
 }

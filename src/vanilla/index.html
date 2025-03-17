@@ -1,22 +1,152 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script defer src="index.js"></script>
     <title>シェア買い - お買い物リスト</title>
     <link rel="stylesheet" href="index.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
+
 <body>
     <div class="container">
-        <h1>シェア買い - お買い物リスト</h1>
-        <input type="text" id="itemInput" placeholder="アイテムを追加">
-        <button id="addItemButton">追加</button>
-        <ul id="shoppingList"></ul>
-        <button id="shareButton">LINEグループに共有</button>
+        <div class="user-profile" id="userProfile" style="display:none;">
+            <img id="profileImage" alt="プロフィール画像" class="profile-image">
+            <span id="profileName"></span>
+        </div>
+
+        <h1>シェア買い</h1>
+
+        <div class="tabs">
+            <button class="tab-button active" data-tab="lists">リスト</button>
+            <button class="tab-button" data-tab="history">履歴</button>
+            <button class="tab-button" data-tab="settings">設定</button>
+        </div>
+
+        <div class="tab-content active" id="lists-tab">
+            <div class="list-selector">
+                <select id="listSelector">
+                    <option value="default">メインリスト</option>
+                </select>
+                <button id="newListButton" class="icon-button"><i class="fas fa-plus"></i></button>
+            </div>
+
+            <div class="add-item-form">
+                <input type="text" id="itemInput" placeholder="アイテムを追加">
+                <div class="item-details">
+                    <input type="number" id="itemQuantity" placeholder="数量" min="1" value="1">
+                    <select id="itemCategory">
+                        <option value="">カテゴリー選択</option>
+                        <option value="食品">食品</option>
+                        <option value="飲料">飲料</option>
+                        <option value="日用品">日用品</option>
+                        <option value="衣類">衣類</option>
+                        <option value="その他">その他</option>
+                    </select>
+                    <input type="text" id="itemStore" placeholder="購入予定店舗">
+                </div>
+                <button id="addItemButton">追加</button>
+            </div>
+
+            <div class="filter-options">
+                <select id="categoryFilter">
+                    <option value="all">全てのカテゴリー</option>
+                    <option value="食品">食品</option>
+                    <option value="飲料">飲料</option>
+                    <option value="日用品">日用品</option>
+                    <option value="衣類">衣類</option>
+                    <option value="その他">その他</option>
+                </select>
+                <select id="storeFilter">
+                    <option value="all">全ての店舗</option>
+                </select>
+                <select id="statusFilter">
+                    <option value="all">全てのステータス</option>
+                    <option value="pending">未購入</option>
+                    <option value="completed">購入済み</option>
+                </select>
+            </div>
+
+            <ul id="shoppingList" class="shopping-list"></ul>
+
+            <div class="action-buttons">
+                <button id="shareButton" class="primary-button"><i class="fas fa-share-alt"></i> 共有</button>
+                <button id="clearCompletedButton" class="secondary-button"><i class="fas fa-trash"></i> 購入済みを削除</button>
+            </div>
+        </div>
+
+        <div class="tab-content" id="history-tab">
+            <h2>購入履歴</h2>
+            <div class="history-filters">
+                <input type="date" id="historyDateFrom">
+                <input type="date" id="historyDateTo">
+                <button id="filterHistoryButton">フィルター</button>
+            </div>
+            <ul id="historyList" class="history-list"></ul>
+        </div>
+
+        <div class="tab-content" id="settings-tab">
+            <h2>設定</h2>
+            <div class="settings-section">
+                <h3>通知設定</h3>
+                <div class="setting-item">
+                    <label for="notifyUpdates">リスト更新通知</label>
+                    <input type="checkbox" id="notifyUpdates" checked>
+                </div>
+                <div class="setting-item">
+                    <label for="notifyMessages">メッセージ通知</label>
+                    <input type="checkbox" id="notifyMessages" checked>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <h3>アカウント</h3>
+                <button id="logoutButton" class="secondary-button">ログアウト</button>
+            </div>
+        </div>
+
+        <div id="shareModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2>リストを共有</h2>
+                <div class="share-options">
+                    <button id="shareFriendsButton" class="share-option">
+                        <i class="fas fa-user-friends"></i>
+                        <span>友だちに共有</span>
+                    </button>
+                    <button id="shareGroupButton" class="share-option">
+                        <i class="fas fa-users"></i>
+                        <span>グループに共有</span>
+                    </button>
+                    <button id="shareLinkButton" class="share-option">
+                        <i class="fas fa-link"></i>
+                        <span>リンクを発行</span>
+                    </button>
+                </div>
+                <div id="shareLink" class="share-link-container" style="display:none;">
+                    <input type="text" id="shareLinkInput" readonly>
+                    <button id="copyLinkButton"><i class="fas fa-copy"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div id="newListModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2>新しいリストを作成</h2>
+                <input type="text" id="newListName" placeholder="リスト名">
+                <button id="createListButton">作成</button>
+            </div>
+        </div>
+
         <button id="loginButton" style="display:none;">LINEでログイン</button>
     </div>
 </body>
+
 </html>
