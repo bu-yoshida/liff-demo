@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // LIFF SDKの初期化
     liff.init({ liffId: '2007056252-3kdw45bE' }) // YOUR_LIFF_IDを実際のLIFF IDに置き換えます
         .then(() => {
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(err => console.error(err));
 
     // ログインボタンのクリックイベント
-    document.getElementById('loginButton').addEventListener('click', function() {
+    document.getElementById('loginButton').addEventListener('click', function () {
         liff.login();
     });
 
@@ -76,7 +76,7 @@ function shareList(message) {
 }
 
 // 例: リスト共有ボタンのクリックイベント
-document.getElementById('shareButton').addEventListener('click', function() {
+document.getElementById('shareButton').addEventListener('click', function () {
     // リストの内容を取得する
     const shoppingList = document.getElementById('shoppingList');
     let listMessage = '';

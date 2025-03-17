@@ -16,7 +16,10 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --progress"
   },
   "devDependencies": {
+    "@eslint/js": "^9.22.0",
     "cross-env": "^7.0.3",
+    "eslint": "^9.22.0",
+    "globals": "^16.0.0",
     "parcel": "^2.11.0",
     "webpack": "^5.90.3",
     "webpack-cli": "^5.1.4",
